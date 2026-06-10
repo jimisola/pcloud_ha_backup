@@ -1,0 +1,73 @@
+{
+  "application_credentials": {
+    "description": "Follow these steps to register an OAuth app with pCloud:\n\n1. Go to the [pCloud App Console]({oauth_creds_url}) and create a new app.\n1. Add `{redirect_url}` as an OAuth redirect URI.\n1. Copy the app's Client ID and Client Secret into the fields below.\n\nSee the [README]({more_info_url}) for more details."
+  },
+  "config": {
+    "step": {
+      "auth": {
+        "title": "Link pCloud account"
+      },
+      "pick_implementation": {
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]",
+        "data": {
+          "implementation": "[%key:common::config_flow::data::implementation%]"
+        },
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        }
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "The pCloud integration needs to re-authenticate your account."
+      },
+      "backup_path": {
+        "title": "Backup folder",
+        "description": "Choose the pCloud folder where Home Assistant backups will be stored. It will be created automatically if it does not exist.",
+        "data": {
+          "backup_path": "Backup path"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "missing_credentials": "[%key:common::config_flow::abort::oauth2_missing_credentials%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "[%key:common::config_flow::abort::reauth_wrong_account%]"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "backup_path": "Backup path",
+          "permanent_delete": "Permanently delete pruned backups"
+        },
+        "data_description": {
+          "backup_path": "The pCloud folder where Home Assistant backups are stored.",
+          "permanent_delete": "If disabled, pruned backups are moved to pCloud Trash instead of being permanently deleted."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    },
+    "auth_failed": {
+      "message": "Authentication failed"
+    },
+    "cannot_access_backup_path": {
+      "message": "Cannot access or create the configured backup path on pCloud"
+    }
+  }
+}
