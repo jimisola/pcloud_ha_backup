@@ -17,8 +17,8 @@ from homeassistant.config_entries import (
 from homeassistant.const import CONF_ACCESS_TOKEN, CONF_TOKEN
 from homeassistant.core import callback
 from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers import http as ha_http
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from homeassistant.helpers.http import current_request
 
 from .api import PCloudApiError, PCloudClient
 from .const import (
@@ -70,7 +70,10 @@ class OAuth2FlowHandler(
         must be read from the callback request here before HA's standard
         flow drops them.
         """
-        if user_input is not None and (request := current_request.get()) is not None:
+        if (
+            user_input is not None
+            and (request := ha_http.current_request.get()) is not None
+        ):
             if hostname := request.query.get(CONF_HOSTNAME):
                 self._hostname = hostname
             if locationid := request.query.get(CONF_LOCATIONID):
