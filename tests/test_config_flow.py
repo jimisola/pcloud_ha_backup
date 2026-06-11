@@ -3,6 +3,13 @@
 from unittest.mock import AsyncMock, MagicMock
 
 from aiohttp.test_utils import make_mocked_request
+from homeassistant.config_entries import SOURCE_USER
+from homeassistant.core import HomeAssistant
+from homeassistant.data_entry_flow import FlowResultType
+from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant_custom_component.test_util.aiohttp import (
+    AiohttpClientMocker,
+)
 
 from custom_components.pcloud.api import PCloudApiError
 from custom_components.pcloud.const import (
@@ -14,13 +21,6 @@ from custom_components.pcloud.const import (
     DEFAULT_PERMANENT_DELETE,
     DOMAIN,
     OAUTH2_TOKEN,
-)
-from homeassistant.config_entries import SOURCE_USER
-from homeassistant.core import HomeAssistant
-from homeassistant.data_entry_flow import FlowResultType
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import (
-    AiohttpClientMocker,
 )
 
 from .conftest import TEST_EMAIL, TEST_HOSTNAME, TEST_USERID
@@ -42,7 +42,12 @@ async def _start_oauth_flow(
     assert result["url"].startswith("https://my.pcloud.com/oauth2/authorize")
 
     return await _complete_oauth_flow(
-        hass, result, current_request, aioclient_mock, hostname=hostname, locationid=locationid
+        hass,
+        result,
+        current_request,
+        aioclient_mock,
+        hostname=hostname,
+        locationid=locationid,
     )
 
 

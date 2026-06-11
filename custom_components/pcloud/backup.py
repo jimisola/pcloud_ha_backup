@@ -6,7 +6,6 @@ from time import time
 from typing import Any, Concatenate
 
 import aiohttp
-
 from homeassistant.components.backup import (
     AgentBackup,
     BackupAgent,
@@ -65,15 +64,13 @@ def async_register_backup_agents_listener(
     return remove_listener
 
 
-def handle_backup_errors[_R, **P](
-    func: Callable[Concatenate["PCloudBackupAgent", P], Coroutine[Any, Any, _R]],
-) -> Callable[Concatenate["PCloudBackupAgent", P], Coroutine[Any, Any, _R]]:
+def handle_backup_errors[R, **P](
+    func: Callable[Concatenate[PCloudBackupAgent, P], Coroutine[Any, Any, R]],
+) -> Callable[Concatenate[PCloudBackupAgent, P], Coroutine[Any, Any, R]]:
     """Handle backup errors."""
 
     @wraps(func)
-    async def wrapper(
-        self: "PCloudBackupAgent", *args: P.args, **kwargs: P.kwargs
-    ) -> _R:
+    async def wrapper(self: PCloudBackupAgent, *args: P.args, **kwargs: P.kwargs) -> R:
         try:
             return await func(self, *args, **kwargs)
         except PCloudAuthError as err:

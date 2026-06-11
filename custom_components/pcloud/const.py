@@ -1,7 +1,7 @@
 """Constants for the pCloud integration."""
 
-from collections.abc import Callable
 import logging
+from collections.abc import Callable
 
 from homeassistant.util.hass_dict import HassKey
 

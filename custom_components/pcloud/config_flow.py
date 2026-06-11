@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
 import logging
+from collections.abc import Mapping
 from typing import Any
 
 import voluptuous as vol
-
 from homeassistant.config_entries import (
     SOURCE_REAUTH,
     ConfigEntry,
@@ -16,8 +15,7 @@ from homeassistant.config_entries import (
 )
 from homeassistant.const import CONF_ACCESS_TOKEN, CONF_TOKEN
 from homeassistant.core import callback
-from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers import http as ha_http
+from homeassistant.helpers import config_entry_oauth2_flow, http as ha_http
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import PCloudApiError, PCloudClient

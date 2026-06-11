@@ -7,6 +7,7 @@ pCloud package is used.
 
 from __future__ import annotations
 
+import contextlib
 from collections.abc import AsyncIterator, Callable
 from typing import Any
 
@@ -184,7 +185,5 @@ class PCloudClient:
 
         if permanent:
             fileid = payload["metadata"]["fileid"]
-            try:
+            with contextlib.suppress(PCloudNotFoundError):
                 await self._call("trash_clear", {"fileid": fileid})
-            except PCloudNotFoundError:
-                pass

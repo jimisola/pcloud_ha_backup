@@ -1,18 +1,18 @@
 """Common fixtures for the pCloud tests."""
 
+import time
 from collections.abc import AsyncIterator, Generator
 from json import dumps
-import time
 from unittest.mock import AsyncMock, patch
 
 import pytest
-
 from homeassistant.components.application_credentials import (
     ClientCredential,
     async_import_client_credential,
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.pcloud.const import (
     CONF_BACKUP_PATH,
@@ -24,8 +24,6 @@ from custom_components.pcloud.const import (
     DOMAIN,
     TOKEN_EXPIRES_IN,
 )
-
-from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from .const import BACKUP_METADATA, MOCK_LIST_FILES
 

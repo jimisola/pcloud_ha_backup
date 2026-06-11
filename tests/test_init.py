@@ -2,6 +2,10 @@
 
 from unittest.mock import AsyncMock
 
+from homeassistant.config_entries import ConfigEntryState
+from homeassistant.core import HomeAssistant
+from pytest_homeassistant_custom_component.common import MockConfigEntry
+
 from custom_components.pcloud.api import PCloudApiError, PCloudAuthError
 from custom_components.pcloud.const import (
     CONF_BACKUP_PATH,
@@ -9,9 +13,6 @@ from custom_components.pcloud.const import (
     DEFAULT_BACKUP_PATH,
     DEFAULT_PERMANENT_DELETE,
 )
-from homeassistant.config_entries import ConfigEntryState
-from homeassistant.core import HomeAssistant
-from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from . import setup_integration
 

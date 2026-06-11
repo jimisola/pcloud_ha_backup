@@ -6,14 +6,6 @@ from io import StringIO
 from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
-
-from custom_components.pcloud.api import PCloudApiError, PCloudAuthError
-from custom_components.pcloud.backup import async_register_backup_agents_listener
-from custom_components.pcloud.const import (
-    CONF_PERMANENT_DELETE,
-    DATA_BACKUP_AGENT_LISTENERS,
-    DOMAIN,
-)
 from homeassistant.components.backup import DOMAIN as BACKUP_DOMAIN, AgentBackup
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.json import json_dumps
@@ -22,6 +14,14 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.typing import (
     ClientSessionGenerator,
     WebSocketGenerator,
+)
+
+from custom_components.pcloud.api import PCloudApiError, PCloudAuthError
+from custom_components.pcloud.backup import async_register_backup_agents_listener
+from custom_components.pcloud.const import (
+    CONF_PERMANENT_DELETE,
+    DATA_BACKUP_AGENT_LISTENERS,
+    DOMAIN,
 )
 
 from .const import BACKUP_METADATA
