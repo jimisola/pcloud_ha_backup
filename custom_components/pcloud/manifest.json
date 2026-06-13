@@ -1,0 +1,14 @@
+{
+  "domain": "pcloud",
+  "name": "pCloud",
+  "after_dependencies": ["backup"],
+  "codeowners": ["@jimisola"],
+  "config_flow": true,
+  "dependencies": ["application_credentials"],
+  "documentation": "https://github.com/jimisola/pcloud_ha_backup",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/jimisola/pcloud_ha_backup/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
