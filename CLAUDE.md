@@ -5,7 +5,7 @@ user-facing description, install, and configuration. This file is implementation
 guidance for agents — non-obvious facts and decisions that took real research/grilling
 to nail down. Don't re-derive these; re-derivation has produced wrong answers before.
 
-**Status: design complete, implementation not started.**
+**Status: implemented (v0.1.0), not yet released/published to HACS.**
 
 ## Naming
 
