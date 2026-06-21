@@ -1,3 +1,8 @@
+> **Archived.** This backup location was never actually tried/verified end-to-end.
+> Relevant parts have been migrated to
+> [HAS-pCloud-Backup](https://github.com/ghotso/HAS-pCloud-Backup) — please use that
+> project instead.
+
 # pCloud Backup for Home Assistant
 
 A [HACS](https://hacs.xyz/)-installable custom integration that registers **pCloud**
